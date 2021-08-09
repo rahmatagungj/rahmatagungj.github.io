@@ -15,7 +15,7 @@ const Header = () => {
   const inactiveClass = "text-gray-300 hover:text-white hover:bg-gray-700";
 
   return (
-    <nav className="">
+    <nav>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-10">
           <div className="flex items-center">
@@ -87,24 +87,25 @@ const Header = () => {
                 />
               </svg>
             </button>
+            {showMenu && (
+              <div className="origin-top-right absolute right-5 mt-10 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1 rounded-md bg-white shadow-xs"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="user-menu"
+                >
+                  <Link
+                    to="/"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                  >
+                    Home
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
-        </div>
-      </div>
-
-      {/* Menu open: "block", Menu closed: "hidden" */}
-      <div className={`md:hidden ${showMenu ? "block" : "hidden"}`}>
-        <div className="px-2 pt-2 pb-3 sm:px-3">
-          {links.map((link, i) => (
-            <Link
-              key={link.text}
-              to={link.to}
-              className={`block px-3 py-2 rounded-md text-sm font-medium ${
-                location.pathname === link.to ? activeClass : inactiveClass
-              } ${i > 0 && "mt-1"}`}
-            >
-              {link.text}
-            </Link>
-          ))}
         </div>
       </div>
     </nav>
